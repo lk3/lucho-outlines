@@ -32,20 +32,20 @@ def test_cache(refresh_environment):
     """Initialize a temporary cache and delete it after the test has run."""
     with tempfile.TemporaryDirectory() as tempdir:
         os.environ["OUTLINES_CACHE_DIR"] = tempdir
-        import outlines
+        import lucho_outlines
 
-        memory = outlines.get_cache()
+        memory = lucho_outlines.get_cache()
         assert memory.storage.location == Path(tempdir)
 
-        yield outlines.caching.cache
+        yield lucho_outlines.caching.cache
 
         memory.storage.clear()
 
 
 def test_get_cache(test_cache):
-    import outlines
+    import lucho_outlines
 
-    memory = outlines.get_cache()
+    memory = lucho_outlines.get_cache()
     assert isinstance(memory, perscache.Cache)
     assert isinstance(memory.storage, perscache.storage.LocalFileStorage)
 
@@ -73,7 +73,7 @@ def test_disable_cache(test_cache):
     """Make sure that we can disable the cache."""
     import outlines
 
-    outlines.disable_cache()
+    lucho_outlines.disable_cache()
 
     # If the cache is disabled then the size
     # of `store` should increase every time
@@ -111,6 +111,6 @@ def test_clear_cache(test_cache):
 
     # The size of `store` should increase if we call `f`
     # after clearing the cache.
-    outlines.clear_cache()
+    lucho_outlines.clear_cache()
     f(1)
     assert len(store) == store_size + 1
