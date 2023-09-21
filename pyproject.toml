@@ -63,7 +63,7 @@ content-type = "text/markdown"
 packages = ["lucho_outlines"]
 
 [tool.setuptools_scm]
-write_to = "lucho_outlines/_version.py"
+write_to = "outlines/_version.py"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -101,7 +101,7 @@ ignore_missing_imports = true
 
 [tool.coverage.run]
 omit = [
-    "lucho_outlines/_version.py",
+    "outlines/_version.py",
     "tests/*",
 ]
 branch = true
