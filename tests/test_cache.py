@@ -71,7 +71,7 @@ def test_get_cache(test_cache):
 
 def test_disable_cache(test_cache):
     """Make sure that we can disable the cache."""
-    import outlines
+    import lucho_outlines
 
     lucho_outlines.disable_cache()
 
@@ -93,7 +93,7 @@ def test_disable_cache(test_cache):
 
 def test_clear_cache(test_cache):
     """Make sure that we can clear the cache."""
-    import outlines
+    import lucho_outlines
 
     store = list()
 

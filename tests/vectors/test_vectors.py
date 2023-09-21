@@ -1,6 +1,6 @@
 import numpy as np
 
-from outlines.vectors import VectorStore
+from lucho_outlines.vectors import VectorStore
 
 
 def test_vector_store():

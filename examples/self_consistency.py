@@ -2,8 +2,8 @@ import re
 
 import numpy as np
 
-import outlines.models as models
-import outlines.text as text
+import lucho_outlines.models as models
+import lucho_outlines.text as text
 
 examples = [
     {

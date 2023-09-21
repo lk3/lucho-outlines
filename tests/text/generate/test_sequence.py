@@ -4,7 +4,7 @@ from typing import Dict, List, Union
 import pytest
 import torch
 
-from outlines.text.generate.sequence import Sequence, vectorized_random_choice
+from lucho_outlines.text.generate.sequence import Sequence, vectorized_random_choice
 
 
 class MockModel:

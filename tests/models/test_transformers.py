@@ -2,7 +2,7 @@ import pytest
 import torch
 from transformers.models.gpt2 import GPT2TokenizerFast
 
-from outlines.models.transformers import TransformersTokenizer, transformers
+from lucho_outlines.models.transformers import TransformersTokenizer, transformers
 
 TEST_MODEL = "hf-internal-testing/tiny-random-GPTJForCausalLM"
 

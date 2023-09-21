@@ -9,8 +9,8 @@ References
        arXiv preprint arXiv:2212.06094.
 
 """
-import outlines.models as models
-import outlines.text as text
+import lucho_outlines.models as models
+import lucho_outlines.text as text
 
 
 @text.prompt

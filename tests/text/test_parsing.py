@@ -7,7 +7,7 @@ import pytest
 from lark.indenter import DedentError
 from lark.lexer import UnexpectedCharacters, UnexpectedToken
 
-from outlines.text.parsing import (
+from lucho_outlines.text.parsing import (
     PartialLark,
     PartialPythonIndenter,
     find_partial_matches,

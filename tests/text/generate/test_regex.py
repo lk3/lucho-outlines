@@ -3,7 +3,7 @@ import math
 import pytest
 import torch
 
-import outlines.text.generate as generate
+import lucho_outlines.text.generate as generate
 
 
 class Tokenizer:

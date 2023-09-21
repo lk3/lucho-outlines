@@ -7,9 +7,9 @@ import interegular
 import torch
 from pydantic import BaseModel
 
-from outlines.text.generate.continuation import Continuation
-from outlines.text.json_schema import build_regex_from_schema
-from outlines.text.parsing import (
+from lucho_outlines.text.generate.continuation import Continuation
+from lucho_outlines.text.json_schema import build_regex_from_schema
+from lucho_outlines.text.parsing import (
     find_partial_matches,
     make_deterministic_fsm,
     map_partial_states_to_vocab,

@@ -7,8 +7,8 @@ import pytest
 import torch
 from pydantic import BaseModel, constr
 
-import outlines.models as models
-import outlines.text.generate as generate
+import lucho_outlines.models as models
+import lucho_outlines.text.generate as generate
 
 
 def test_transformers_integration_continuation():

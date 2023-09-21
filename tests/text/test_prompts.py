@@ -3,7 +3,7 @@ from typing import List
 import pytest
 from pydantic import BaseModel, Field
 
-import outlines.text as text
+import lucho_outlines.text as text
 
 
 def test_render():

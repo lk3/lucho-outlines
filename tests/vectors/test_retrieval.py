@@ -2,7 +2,7 @@ import numpy as np
 from numpy.testing import assert_array_equal
 from scipy.spatial.transform import Rotation as R
 
-from outlines.vectors.retrieval import cosine_similarity
+from lucho_outlines.vectors.retrieval import cosine_similarity
 
 
 def test_cosine_similarity():

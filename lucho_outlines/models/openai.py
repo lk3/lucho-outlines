@@ -16,8 +16,8 @@ from tenacity import (
     wait_random_exponential,
 )
 
-import outlines
-from outlines.caching import cache
+import lucho_outlines
+from lucho_outlines.caching import cache
 
 __all__ = [
     "OpenAICompletion",
@@ -97,7 +97,7 @@ def OpenAICompletion(
         else:
             return generate_base(system, prompt, stop_at, samples, mask)
 
-    @functools.partial(outlines.vectorize, signature="(),(m),(),()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="(),(m),(),()->(s)")
     async def generate_base(
         system: str,
         prompt: str,
@@ -124,7 +124,7 @@ def OpenAICompletion(
 
         return results
 
-    @functools.partial(outlines.vectorize, signature="(),(m),()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="(),(m),()->(s)")
     async def generate_choice(
         prompt: str, is_in: List[str], samples: int
     ) -> Union[List[str], str]:
@@ -195,7 +195,7 @@ def OpenAIEmbeddings(model_name: str):
 
     """
 
-    @functools.partial(outlines.vectorize, signature="()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="()->(s)")
     async def generate(query: str) -> np.ndarray:
         api_response = await call_embeddings_api(model_name, query)
         response = api_response["data"][0]["embedding"]
@@ -228,7 +228,7 @@ def OpenAIImageGeneration(model_name: str = "", size: str = "512x512"):
     def generate(prompt: str, samples: int = 1):
         return generate_base(prompt, samples)
 
-    @functools.partial(outlines.vectorize, signature="(),()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="(),()->(s)")
     async def generate_base(prompt: str, samples: int) -> PILImage:
         api_response = await call_image_generation_api(prompt, size, samples)
 

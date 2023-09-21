@@ -7,8 +7,8 @@ The original repo can be found at https://github.com/yoheinakajima/babyagi
 from collections import deque
 from typing import Deque, List
 
-import outlines.models as models
-import outlines.text as text
+import lucho_outlines.models as models
+import lucho_outlines.text as text
 
 model = models.text_completion.openai("gpt-3.5-turbo")
 

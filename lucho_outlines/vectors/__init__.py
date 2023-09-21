@@ -3,7 +3,7 @@ from typing import Callable, Dict, List, Tuple
 
 import numpy as np
 
-from outlines.vectors.retrieval import cosine_similarity
+from lucho_outlines.vectors.retrieval import cosine_similarity
 
 
 class VectorStore:
