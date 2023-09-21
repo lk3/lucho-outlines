@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_array_equal
 
-from outlines.base import vectorize
+from lucho_outlines.base import vectorize
 
 
 def test_vectorize_docstring():
