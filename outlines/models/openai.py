@@ -54,12 +54,16 @@ def OpenAICompletion(
 
     if "text-" in model_name:
         call_api = call_completion_api
-        format_prompt = lambda x: x
-        extract_choice = lambda x: x["text"]
+        def format_prompt(x): return x
+        def extract_choice(x): return x["text"]
     elif "gpt-" in model_name:
         call_api = call_chat_completion_api
-        format_prompt = lambda x, y: [{"role": "system", "content": x}, {"role": "user", "content": y}]
-        extract_choice = lambda x: x["message"]["content"]
+
+        def format_prompt(x, y): return [
+            {"role": "system", "content": x},
+            {"role": "user", "content": y}
+        ]
+        def extract_choice(x): return x["message"]["content"]
     else:
         raise NameError(
             f"The model {model_name} requested is not available. Only the completion and chat completion models are available for OpenAI."
