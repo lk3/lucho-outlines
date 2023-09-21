@@ -99,7 +99,11 @@ def OpenAICompletion(
 
     @functools.partial(outlines.vectorize, signature="(),(m),(),()->(s)")
     async def generate_base(
-        system: str, prompt: str, stop_at: List[Optional[str]], samples: int, mask: Dict[int, int]
+        system: str,
+        prompt: str,
+        stop_at: List[Optional[str]],
+        samples: int,
+        mask: Dict[int, int]
     ) -> str:
         responses = await call_api(
             model_name,
