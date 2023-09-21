@@ -2,7 +2,7 @@
 import functools
 from typing import Callable, Dict, Tuple
 
-import outlines.models as models
+import lucho_outlines.models as models
 
 
 def image_generation(model_path: str) -> Callable:

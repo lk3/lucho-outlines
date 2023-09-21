@@ -16,8 +16,8 @@ from tenacity import (
     wait_random_exponential,
 )
 
-import outlines
-from outlines.caching import cache
+import lucho_outlines
+from lucho_outlines.caching import cache
 
 __all__ = [
     "OpenAICompletion",
@@ -54,12 +54,16 @@ def OpenAICompletion(
 
     if "text-" in model_name:
         call_api = call_completion_api
-        format_prompt = lambda x: x
-        extract_choice = lambda x: x["text"]
+        def format_prompt(x): return x
+        def extract_choice(x): return x["text"]
     elif "gpt-" in model_name:
         call_api = call_chat_completion_api
-        format_prompt = lambda x: [{"role": "user", "content": x}]
-        extract_choice = lambda x: x["message"]["content"]
+
+        def format_prompt(x, y): return [
+            {"role": "system", "content": x},
+            {"role": "user", "content": y}
+        ]
+        def extract_choice(x): return x["message"]["content"]
     else:
         raise NameError(
             f"The model {model_name} requested is not available. Only the completion and chat completion models are available for OpenAI."
@@ -68,6 +72,7 @@ def OpenAICompletion(
     def generate(
         prompt: str,
         *,
+        system="",
         samples=1,
         stop_at: Union[List[Optional[str]], str] = [],
         is_in=None,
@@ -90,15 +95,19 @@ def OpenAICompletion(
         elif is_in is not None:
             return generate_choice(prompt, is_in, samples)
         else:
-            return generate_base(prompt, stop_at, samples, mask)
+            return generate_base(system, prompt, stop_at, samples, mask)
 
-    @functools.partial(outlines.vectorize, signature="(),(m),(),()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="(),(m),(),()->(s)")
     async def generate_base(
-        prompt: str, stop_at: List[Optional[str]], samples: int, mask: Dict[int, int]
+        system: str,
+        prompt: str,
+        stop_at: List[Optional[str]],
+        samples: int,
+        mask: Dict[int, int]
     ) -> str:
         responses = await call_api(
             model_name,
-            format_prompt(prompt),
+            format_prompt(system, prompt),
             max_tokens,
             temperature,
             stop_at,
@@ -115,7 +124,7 @@ def OpenAICompletion(
 
         return results
 
-    @functools.partial(outlines.vectorize, signature="(),(m),()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="(),(m),()->(s)")
     async def generate_choice(
         prompt: str, is_in: List[str], samples: int
     ) -> Union[List[str], str]:
@@ -186,7 +195,7 @@ def OpenAIEmbeddings(model_name: str):
 
     """
 
-    @functools.partial(outlines.vectorize, signature="()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="()->(s)")
     async def generate(query: str) -> np.ndarray:
         api_response = await call_embeddings_api(model_name, query)
         response = api_response["data"][0]["embedding"]
@@ -219,7 +228,7 @@ def OpenAIImageGeneration(model_name: str = "", size: str = "512x512"):
     def generate(prompt: str, samples: int = 1):
         return generate_base(prompt, samples)
 
-    @functools.partial(outlines.vectorize, signature="(),()->(s)")
+    @functools.partial(lucho_outlines.vectorize, signature="(),()->(s)")
     async def generate_base(prompt: str, samples: int) -> PILImage:
         api_response = await call_image_generation_api(prompt, size, samples)
 

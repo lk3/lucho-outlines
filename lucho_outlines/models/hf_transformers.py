@@ -4,8 +4,8 @@ from typing import TYPE_CHECKING, Callable, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 
-import outlines
-from outlines.text.masks import create_float_mask, create_int_mask
+import lucho_outlines
+from lucho_outlines.text.masks import create_float_mask, create_int_mask
 
 if TYPE_CHECKING:
     import torch
@@ -75,7 +75,7 @@ def HuggingFaceCompletion(
     return call
 
 
-@functools.partial(outlines.vectorize, signature="(),(m),(),(),(),(i),(j),()->(m,s)")
+@functools.partial(lucho_outlines.vectorize, signature="(),(m),(),(),(),(i),(j),()->(m,s)")
 def call_model_generate_method(
     model_name: str,
     prompt: str,

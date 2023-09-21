@@ -11,8 +11,8 @@ References
 """
 import argparse
 
-import outlines.models as models
-import outlines.text as text
+import lucho_outlines.models as models
+import lucho_outlines.text as text
 
 
 def split_into_steps(question, model_name: str):

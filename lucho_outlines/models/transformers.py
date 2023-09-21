@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, List, Optional, Tuple, Union
 import torch
 from transformers.file_utils import SPIECE_UNDERLINE
 
-from outlines.models.tokenizer import Tokenizer
+from lucho_outlines.models.tokenizer import Tokenizer
 
 if TYPE_CHECKING:
     from transformers import PreTrainedModel, PreTrainedTokenizer

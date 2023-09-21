@@ -1,6 +1,6 @@
 import pytest
 
-from outlines.models.tokenizer import Tokenizer
+from lucho_outlines.models.tokenizer import Tokenizer
 
 
 def test_tokenizer():

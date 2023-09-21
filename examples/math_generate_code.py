@@ -1,6 +1,6 @@
 """Example from https://dust.tt/spolu/a/d12ac33169"""
-import outlines.models as models
-import outlines.text as text
+import lucho_outlines.models as models
+import lucho_outlines.text as text
 
 examples = [
     {"question": "What is 37593 * 67?", "code": "37593 * 67"},

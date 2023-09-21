@@ -6,7 +6,7 @@ from typing import List, Optional, Union
 import pytest
 from pydantic import BaseModel, constr
 
-from outlines.text.json_schema import (
+from lucho_outlines.text.json_schema import (
     BOOLEAN,
     INTEGER,
     NULL,

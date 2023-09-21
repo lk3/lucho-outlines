@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "outlines"
+name = "lucho_outlines"
 authors= [{name = "Outlines Developers"}]
 description = "Probabilistic Generative Model Programming"
 requires-python = ">=3.10"
@@ -60,10 +60,10 @@ file="README.md"
 content-type = "text/markdown"
 
 [tool.setuptools]
-packages = ["outlines"]
+packages = ["lucho_outlines"]
 
 [tool.setuptools_scm]
-write_to = "outlines/_version.py"
+write_to = "lucho_outlines/_version.py"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -101,7 +101,7 @@ ignore_missing_imports = true
 
 [tool.coverage.run]
 omit = [
-    "outlines/_version.py",
+    "lucho_outlines/_version.py",
     "tests/*",
 ]
 branch = true

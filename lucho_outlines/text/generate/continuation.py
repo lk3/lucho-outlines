@@ -2,7 +2,7 @@ from typing import List, Optional, Union
 
 import torch
 
-from outlines.text.generate.sequence import Sequence
+from lucho_outlines.text.generate.sequence import Sequence
 
 
 class Continuation(Sequence):

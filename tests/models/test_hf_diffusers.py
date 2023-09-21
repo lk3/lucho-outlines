@@ -1,7 +1,7 @@
 import numpy as np
 from PIL.Image import Image as PILImage
 
-from outlines.models.hf_diffusers import HuggingFaceDiffuser
+from lucho_outlines.models.hf_diffusers import HuggingFaceDiffuser
 
 MODEL = "hf-internal-testing/tiny-stable-diffusion-torch"
 

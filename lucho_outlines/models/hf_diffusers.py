@@ -5,7 +5,7 @@ from typing import List, Union
 import numpy as np
 from PIL.Image import Image as PILImage
 
-import outlines
+import lucho_outlines
 
 
 def HuggingFaceDiffuser(model_name: str) -> PILImage:
@@ -29,7 +29,7 @@ def HuggingFaceDiffuser(model_name: str) -> PILImage:
     return call
 
 
-@functools.partial(outlines.vectorize, signature="(),(m),()->(m,s)")
+@functools.partial(lucho_outlines.vectorize, signature="(),(m),()->(m,s)")
 def call_stable_diffusion_pipeline(
     model_name: str, prompt: List[str], samples: int
 ) -> PILImage:

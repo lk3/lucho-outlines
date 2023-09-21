@@ -3,7 +3,7 @@ import random
 import pytest
 import torch
 
-from outlines.text.masks import create_char_set_mask, create_float_mask, create_int_mask
+from lucho_outlines.text.masks import create_char_set_mask, create_float_mask, create_int_mask
 
 
 def test_int_mask():

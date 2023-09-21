@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from outlines.models.hf_transformers import HuggingFaceCompletion
+from lucho_outlines.models.hf_transformers import HuggingFaceCompletion
 
 TEST_MODEL = "hf-internal-testing/tiny-random-GPTJForCausalLM"
 

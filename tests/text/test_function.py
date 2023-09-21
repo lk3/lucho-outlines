@@ -2,7 +2,7 @@ import json
 
 from pydantic import BaseModel
 
-import outlines.text as text
+import lucho_outlines.text as text
 
 
 def test_function_no_validator():
