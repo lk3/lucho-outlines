@@ -58,7 +58,7 @@ def OpenAICompletion(
         extract_choice = lambda x: x["text"]
     elif "gpt-" in model_name:
         call_api = call_chat_completion_api
-        format_prompt = lambda x: [{"role": "user", "content": x}]
+        format_prompt = lambda x, y: [{"role": "system", "content": x}, {"role": "user", "content": y}]
         extract_choice = lambda x: x["message"]["content"]
     else:
         raise NameError(
@@ -68,6 +68,7 @@ def OpenAICompletion(
     def generate(
         prompt: str,
         *,
+        system="",
         samples=1,
         stop_at: Union[List[Optional[str]], str] = [],
         is_in=None,
@@ -90,15 +91,15 @@ def OpenAICompletion(
         elif is_in is not None:
             return generate_choice(prompt, is_in, samples)
         else:
-            return generate_base(prompt, stop_at, samples, mask)
+            return generate_base(system, prompt, stop_at, samples, mask)
 
     @functools.partial(outlines.vectorize, signature="(),(m),(),()->(s)")
     async def generate_base(
-        prompt: str, stop_at: List[Optional[str]], samples: int, mask: Dict[int, int]
+        system: str, prompt: str, stop_at: List[Optional[str]], samples: int, mask: Dict[int, int]
     ) -> str:
         responses = await call_api(
             model_name,
-            format_prompt(prompt),
+            format_prompt(system, prompt),
             max_tokens,
             temperature,
             stop_at,
